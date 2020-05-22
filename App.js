@@ -20,9 +20,10 @@ import {
 import StickableTabView from './components/StickableTabView';
 import SSZLandingPage from './components/SSZLandingPage';
 
+const AnimatedSSZLandingPage = Animated.createAnimatedComponent(SSZLandingPage);
 class App extends Component {
   // scrollOffsetAnimatedValue = new Animated.ValueXY();
-  contentHeightAnimatedValue = new Animated.Value(100);
+  tapTotalAnimatedValue = new Animated.Value(0);
   componentDidMount() {
     // setTimeout(() => {
     //   Animated.spring(this.scrollOffsetAnimatedValue, {
@@ -42,7 +43,9 @@ class App extends Component {
     //     this.scrollView.setNativeProps({contentOffset: val});
     //   }
     // });
-    console.log('didmount');
+    this.tapTotalAnimatedValue.addListener((val) => {
+      console.log('val2', val);
+    });
   }
   render() {
     return (
@@ -88,8 +91,23 @@ class App extends Component {
               }}
             />
           </Animated.ScrollView> */}
-          <SSZLandingPage
+          <AnimatedSSZLandingPage
             style={{height: 100, width: 200, backgroundColor: 'red'}}
+            onTap={Animated.event(
+              [
+                {
+                  nativeEvent: {
+                    total: this.tapTotalAnimatedValue,
+                  },
+                },
+              ],
+              {
+                useNativeDriver: true,
+              },
+            )}
+            // onTap={(event) => {
+            //   console.log('ontap', event.nativeEvent);
+            // }}
           />
         </SafeAreaView>
       </>

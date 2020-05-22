@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SZLLadingPage : RCTView
 - (instancetype)initWithEventDispatcher:(RCTEventDispatcher *)eventDispatcher;
+@property (nonatomic, copy) RCTDirectEventBlock onTap;
 
 @end
 

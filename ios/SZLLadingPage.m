@@ -6,7 +6,8 @@
 //
 
 #import "SZLLadingPage.h"
-#import "React/UIView+React.h"
+#import "SZLTapEvent.h"
+#import <React/UIView+React.h>
 
 @implementation SZLLadingPage
 {
@@ -33,9 +34,12 @@
   return self;
 }
 // Declare the Gesture Recogniser handler method.
-- (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer{
-   NSLog(@"Tapped %@", self.reactTag);
-  NSString *eventName = NSStringFromSelector(@selector(gestureRecognizer));
+- (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer
+{
+  NSString *eventName = NSStringFromSelector(@selector(onTap));
+  SZLTapEvent *tapEvent = [[SZLTapEvent alloc] initWithEventName:eventName reactTag:self.reactTag tapTotal:@(1)];
+  [_eventDispatcher sendEvent:tapEvent];
+  NSLog(@"Tapped %@", self.reactTag);
 }
 
 @end

@@ -19,6 +19,8 @@ RCT_EXPORT_MODULE(SZLLandingPage)
   return [[SZLLadingPage alloc] initWithEventDispatcher:self.bridge.eventDispatcher];
 }
 
+RCT_EXPORT_VIEW_PROPERTY(onTap, RCTDirectEventBlock)
+
 //  RCTScrollEvent *scrollEvent = [[RCTScrollEvent alloc] initWithEventName:eventName
 //                                                                  reactTag:self.reactTag
 //                                                   scrollViewContentOffset:scrollView.contentOffset
