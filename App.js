@@ -24,6 +24,7 @@ const AnimatedSSZLandingPage = Animated.createAnimatedComponent(SSZLandingPage);
 class App extends Component {
   // scrollOffsetAnimatedValue = new Animated.ValueXY();
   tapTotalAnimatedValue = new Animated.Value(0);
+  contentHeightAnimatedValue = new Animated.Value(0);
   componentDidMount() {
     // setTimeout(() => {
     //   Animated.spring(this.scrollOffsetAnimatedValue, {
@@ -52,7 +53,7 @@ class App extends Component {
       <>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView>
-          {/* <Animated.ScrollView
+          <Animated.ScrollView
             style={{height: 300}}
             onScroll={Animated.event(
               // scrollX = e.nativeEvent.contentOffset.x
@@ -61,7 +62,7 @@ class App extends Component {
                   nativeEvent: {
                     contentOffset: {
                       x: this.contentHeightAnimatedValue,
-                    },a
+                    },
                   },
                 },
               ],
@@ -90,8 +91,8 @@ class App extends Component {
                 width: 300,
               }}
             />
-          </Animated.ScrollView> */}
-          <AnimatedSSZLandingPage
+          </Animated.ScrollView>
+          {/* <AnimatedSSZLandingPage
             style={{height: 100, width: 200, backgroundColor: 'red'}}
             onTap={Animated.event(
               [
@@ -108,7 +109,7 @@ class App extends Component {
             // onTap={(event) => {
             //   console.log('ontap', event.nativeEvent);
             // }}
-          />
+          /> */}
         </SafeAreaView>
       </>
     );

@@ -12,6 +12,7 @@
 @implementation SZLLadingPage
 {
   RCTEventDispatcher *_eventDispatcher;
+  NSNumber *_tapTotal;
 }
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -37,7 +38,8 @@
 - (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer
 {
   NSString *eventName = NSStringFromSelector(@selector(onTap));
-  SZLTapEvent *tapEvent = [[SZLTapEvent alloc] initWithEventName:eventName reactTag:self.reactTag tapTotal:@(1)];
+  _tapTotal = @([_tapTotal intValue] + 1);
+  SZLTapEvent *tapEvent = [[SZLTapEvent alloc] initWithEventName:eventName reactTag:self.reactTag tapTotal:_tapTotal];
   [_eventDispatcher sendEvent:tapEvent];
   NSLog(@"Tapped %@", self.reactTag);
 }
